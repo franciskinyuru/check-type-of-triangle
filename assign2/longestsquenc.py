@@ -1,31 +1,24 @@
+# start to sing up
 def timeSingUp(special_digit):
-    series = [*range(1, special_digit+1)]
+    series = [*range(1, special_digit + 1)]
     return series
 
 
+# get the series numbers
 def rangeofnumbers(start, special_num):
     orig_list = [*range(start, 10000, 1)]
     new_list = []
     for i in orig_list:
         if str(special_num) in str(i):
-            new_list = [*range(start, i+1)]
+            new_list = [*range(start, i + 1)]
             break
     return new_list
 
 
-def specialNum():
-    special_list = [3, 4, 5, 6, 7, 8]
-    special_digit = input("Enter special digit \n")
-    special_digit = int(special_digit)
-    if special_digit in special_list:
-        return special_digit
-    else:
-        return "invalid special number"
-
-
-def checkLast():
+# get the series of number upto 4 nums count while passing special num
+def checkLast(special):
     my_final_list = []
-    special = specialNum()
+    special = special
     series = timeSingUp(special)
     my_final_list = my_final_list + series
     new_start = series[-1] * special
@@ -52,14 +45,30 @@ def checkLast():
     return less_list
 
 
-myseries = checkLast()
-print(' '.join(str(e) for e in myseries))
+# get the longest series as a tuple
+def longest():
+    list_len = {}
+    myseries2 = checkLast(2)
+    list_len['2'] = len(myseries2)
+    myseries3 = checkLast(3)
+    list_len['3'] = len(myseries3)
+    myseries4 = checkLast(4)
+    list_len['4'] = len(myseries4)
+    myseries5 = checkLast(5)
+    list_len['5'] = len(myseries5)
+    myseries6 = checkLast(6)
+    list_len['6'] = len(myseries6)
+    myseries7 = checkLast(7)
+    list_len['7'] = len(myseries7)
+    myseries8 = checkLast(8)
+    list_len['8'] = len(myseries8)
+    myseries9 = checkLast(9)
+    list_len['9'] = len(myseries9)
+    longest_sequence = max(list_len.items(), key=lambda k: k[1])
+    tolist = list(longest_sequence)
+    tolist[0] = int(tolist[0])
+    totuple = tuple(tolist)
+    print(totuple)
 
 
-
-
-
-
-
-
-
+longest()
